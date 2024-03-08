@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    font-size: inherit;
+    font-family: inherit;
+}
+
+html {
+    font-size: 16px;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "apple color emoji", "segoe ui emoji", "Segoe UI Symbol", "noto color emoji";
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
+.gallery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 100%;
+    overflow: hidden;
+}
+
+.gallery .image {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+    position: relative;
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+    padding: 1rem;
+}
+
+.gallery .image:nth-child(1) {
+    background-image: url(https://lugom.io/projects/expandable-gallery/assets/img/img-1.jpg);
+}
+
+.gallery .image:nth-child(2) {
+    background-image: url(https://lugom.io/projects/expandable-gallery/assets/img/img-2.jpg);
+}
+
+.gallery .image:nth-child(3) {
+    background-image: url(https://lugom.io/projects/expandable-gallery/assets/img/img-3.jpg);
+}
+
+.gallery .image:nth-child(4) {
+    background-image: url(https://lugom.io/projects/expandable-gallery/assets/img/img-4.jpg);
+}
+
+.gallery .image:nth-child(5) {
+    background-image: url(https://lugom.io/projects/expandable-gallery/assets/img/img-5.jpg);
+}
+
+.gallery .image::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.gallery .active::before {
+    opacity: 0;
+}
+
+.gallery .active {
+    flex-grow: 5;
+}
+
+.gallery .image img {
+    position: relative;
+    transition: all 0.2s ease-in-out;
+    width: 150px;
+    height: 150px;
+}
+
+.gallery .image:hover img {
+    filter: brightness(1.3);
+}
+
+.gallery .image p {
+    color: white;
+    font-size: 2rem;
+    z-index: 2;
+    position: absolute;
+    transition: all 0.2s ease-in-out;
+    text-shadow: 2px 2px 2px #000, 0px 0px 6px #000;
+}
+
+.gallery .image p:nth-child(1) {
+    top: 0;
+    opacity: 0;
+}
+
+.gallery .image p:nth-child(3) {
+    bottom: 0;
+    opacity: 0;
+}
+
+main.gallery div.active p:nth-child(1) {
+    top: 15%;
+    opacity: 1;
+}
+
+main.gallery div.active p:nth-child(3) {
+    bottom: 15%;
+    opacity: 1;
+}
+
+@media screen and (max-width: 1000px) {
+    .gallery {
+        flex-direction: column;
+    }
+
+    .gallery .image {
+        height: 135px;
+    }
+}
